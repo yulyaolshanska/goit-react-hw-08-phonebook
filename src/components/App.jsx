@@ -19,9 +19,9 @@ export function App() {
         <Routes>
           <Route path="/" element={<AppBar />}>
             <Route index element={<Home />} />
-            <Route path="register " element={<RegisterView />} />
-            <Route path="login  " element={<LogInView />} />
-            <Route path="contacts  " element={<ContactsView />} />
+            <Route path="register" element={<RegisterView />} />
+            <Route path="login" element={<LogInView />} />
+            <Route path="contacts" element={<ContactsView />} />
             <Route path="*" element={<NotFound />} />
           </Route>
         </Routes>
