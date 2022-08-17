@@ -1,9 +1,6 @@
 // import { nanoid } from 'nanoid';
 import { lazy, Suspense } from 'react';
-import { ContactForm } from './ContactForm/ContactForm';
 import { ToastContainer } from 'react-toastify';
-import { ContactList } from './ContactList/ContactList';
-import { Filter } from './Filter/Filter';
 import { Loader } from './Loader/Loader';
 import css from './App.module.css';
 import { Routes, Route } from 'react-router-dom';
@@ -29,11 +26,7 @@ export function App() {
           </Route>
         </Routes>
       </Suspense>
-      <h1 className={css.title}>Phonebook</h1>
-      <ContactForm />
-      <h2 className={css.title}>Contacts</h2>
-      <Filter />
-      <ContactList />
+
       <ToastContainer />
     </div>
   );
