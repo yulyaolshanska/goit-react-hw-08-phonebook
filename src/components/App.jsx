@@ -7,9 +7,9 @@ import { Routes, Route } from 'react-router-dom';
 
 const AppBar = lazy(() => import('components/AppBar/AppBar'));
 const Home = lazy(() => import('pages/Home/Home'));
-const RegisterView = lazy(() => import('pages/RegisterView/RegisterView'));
-const LogInView = lazy(() => import('pages/LogInView/LogInView'));
-const ContactsView = lazy(() => import('pages/ContactsView/ContactsView'));
+const RegisterView = lazy(() => import('pages/Register/Register'));
+const LogInView = lazy(() => import('pages/LogIn/LogIn'));
+const ContactsView = lazy(() => import('pages/Contacts/Contacts'));
 const NotFound = lazy(() => import('pages/NotFound/NotFound'));
 
 export function App() {
