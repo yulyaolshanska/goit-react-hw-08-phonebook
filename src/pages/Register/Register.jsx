@@ -1,9 +1,23 @@
 const RegisterView = () => {
   return (
-    <form>
-      <input></input>
-      <button type="submit">Register</button>
-    </form>
+    <>
+      <h1>Register</h1>
+      <form>
+        <label>
+          Name
+          <input type="text" name="name" value="" />
+        </label>
+        <label>
+          Email
+          <input type="email" name="email" value="" />
+        </label>
+        <label>
+          Password
+          <input type="password" name="password" value="" />
+        </label>
+        <button type="submit">Register</button>
+      </form>
+    </>
   );
 };
 
