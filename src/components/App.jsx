@@ -1,10 +1,19 @@
 // import { nanoid } from 'nanoid';
+import { lazy, Suspense } from 'react';
 import { ContactForm } from './ContactForm/ContactForm';
 import { ToastContainer } from 'react-toastify';
 import { ContactList } from './ContactList/ContactList';
 import { Filter } from './Filter/Filter';
+import { Loader } from './Loader/Loader';
 import css from './App.module.css';
-import { Routes, Route, Suspense } from 'react-router-dom';
+import { Routes, Route } from 'react-router-dom';
+
+const AppBar = lazy(() => import('components/AppBar/AppBar'));
+const Home = lazy(() => import('pages/Home/Home'));
+const RegisterView = lazy(() => import('pages/RegisterView/RegisterView'));
+const LogInView = lazy(() => import('pages/LogInView/LogInView'));
+const ContactsView = lazy(() => import('pages/ContactsView/ContactsView'));
+const NotFound = lazy(() => import('pages/NotFound/NotFound'));
 
 export function App() {
   return (

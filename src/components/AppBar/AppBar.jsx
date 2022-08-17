@@ -1,8 +1,8 @@
 import { Outlet } from 'react-router-dom';
-import { Navigation } from 'components/Navigation';
-import { UserMenu } from 'components/UserMenu';
+import { Navigation } from 'components/Navigation/Navigation';
+import { UserMenu } from 'components/UserMenu/UserMenu';
 
-export function AppBar() {
+function AppBar() {
   return (
     <header>
       <Navigation />
@@ -11,3 +11,5 @@ export function AppBar() {
     </header>
   );
 }
+
+export default AppBar;
