@@ -13,13 +13,6 @@ const initialState = {
 const authSlice = createSlice({
   name: 'auth',
   initialState,
-  // reducers: {
-  //   setCredentials: (state, { payload: { user, token } }) => {
-  //     state.user = user;
-  //     state.token = token;
-  //   },
-  // },
-
   extraReducers: {
     [authOperations.register.fulfilled](state, action) {
       state.user = action.payload.user;

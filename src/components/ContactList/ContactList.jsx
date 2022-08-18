@@ -4,10 +4,16 @@ import { useSelector } from 'react-redux';
 import { getFilter } from 'redux/filterSlice';
 
 import { useGetContactsQuery } from 'redux/contactsSlice';
+import { useEffect } from 'react';
 
 export const ContactList = () => {
   const filter = useSelector(getFilter);
-  const { data: contacts, error, isLoading } = useGetContactsQuery();
+  const { data: contacts, error, isLoading, refetch } = useGetContactsQuery();
+  console.log('first', useGetContactsQuery());
+
+  useEffect(() => {
+    refetch();
+  }, [refetch]);
 
   const getFilteredContacts = () => {
     const normalizedFilter = filter.toLocaleLowerCase().trim();
@@ -28,13 +34,13 @@ export const ContactList = () => {
       {contacts && (
         <ul className={css.contactList}>
           {filteredContacts.length !== 0 ? (
-            filteredContacts.map(({ name, phone, id }) => {
+            filteredContacts.map(({ name, number, id }) => {
               return (
                 <ContactItem
                   key={id}
                   id={id}
                   name={name}
-                  phone={phone}
+                  number={number}
                 ></ContactItem>
               );
             })

@@ -13,7 +13,7 @@ import {
 
 export function ContactForm() {
   const [name, setName] = useState('');
-  const [phone, setPhone] = useState('');
+  const [number, setNumber] = useState('');
   const { data: contacts } = useGetContactsQuery();
   const [addContact, { isLoading, isSuccess }] = useAddContactMutation();
 
@@ -28,14 +28,14 @@ export function ContactForm() {
       alreadyExistsToast(`Contact ${name} already exists`);
       return;
     }
-    const contact = { name, phone };
+    const contact = { name, number };
     try {
       await addContact(contact);
 
       if (isSuccess) {
         successToast('Contact added ');
         setName('');
-        setPhone('');
+        setNumber('');
       }
     } catch (err) {
       errorToast(err.message);
@@ -48,7 +48,7 @@ export function ContactForm() {
         setName(e.target.value);
         break;
       case 'number':
-        setPhone(e.target.value);
+        setNumber(e.target.value);
         break;
       default:
         return;
@@ -74,16 +74,16 @@ export function ContactForm() {
         Number
         <input
           className={css.input}
-          value={phone}
+          value={number}
           onChange={handleChange}
           type="tel"
           name="number"
           pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
-          title="Phone number must be at least 5 digits and can contain spaces, dashes, parentheses and can start with +"
+          title="number number must be at least 5 digits and can contain spaces, dashes, parentheses and can start with +"
           required
         ></input>
       </label>
-      <button className={css.addBtn} type="submit" disabled={!name || !phone}>
+      <button className={css.addBtn} type="submit" disabled={!name || !number}>
         {isLoading ? 'Loading...' : ' Add contact'}
       </button>
     </form>

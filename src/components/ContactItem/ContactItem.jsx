@@ -3,7 +3,7 @@ import css from './ContactItem.module.css';
 import { useDeleteContactMutation } from 'redux/contactsSlice';
 import { successToast } from 'utils/notifications';
 
-export const ContactItem = ({ name, phone, id }) => {
+export const ContactItem = ({ name, number, id }) => {
   const [deleteContact, { isSuccess, isLoading }] = useDeleteContactMutation();
 
   if (isSuccess) {
@@ -13,7 +13,7 @@ export const ContactItem = ({ name, phone, id }) => {
   return (
     <li className={css.contactItem}>
       <p>{name}</p>
-      <p>{phone}</p>
+      <p>{number}</p>
 
       <button
         className={css.button}
@@ -29,6 +29,6 @@ export const ContactItem = ({ name, phone, id }) => {
 
 ContactItem.propTypes = {
   name: PropTypes.string.isRequired,
-  phone: PropTypes.string.isRequired,
+  number: PropTypes.string.isRequired,
   id: PropTypes.string.isRequired,
 };
