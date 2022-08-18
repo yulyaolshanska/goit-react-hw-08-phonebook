@@ -19,6 +19,7 @@ export function ContactForm() {
 
   const handleAddContact = async e => {
     e.preventDefault();
+
     if (
       contacts.some(
         contact => contact.name.toLowerCase() === name.toLocaleLowerCase()
@@ -30,6 +31,7 @@ export function ContactForm() {
     const contact = { name, phone };
     try {
       await addContact(contact);
+
       if (isSuccess) {
         successToast('Contact added ');
         setName('');
