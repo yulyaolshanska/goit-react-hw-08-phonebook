@@ -13,14 +13,32 @@ const initialState = {
 const authSlice = createSlice({
   name: 'auth',
   initialState,
+  // reducers: {
+  //   setCredentials: (state, { payload: { user, token } }) => {
+  //     state.user = user;
+  //     state.token = token;
+  //   },
+  // },
+
   extraReducers: {
     [authOperations.register.fulfilled](state, action) {
       state.user = action.payload.user;
       state.token = action.payload.token;
       state.isLoggedIn = true;
     },
+    [authOperations.logIn.fulfilled](state, action) {
+      state.user = action.payload.user;
+      state.token = action.payload.token;
+      state.isLoggedIn = true;
+    },
+    [authOperations.logOut.fulfilled](state, _) {
+      state.user = initialState.user;
+      state.token = initialState.token;
+      state.isLoggedIn = false;
+    },
   },
 });
 
 // export default authSlice.reducer;
 export const authReducer = authSlice.reducer;
+export const { setCredentials } = authSlice.actions;
