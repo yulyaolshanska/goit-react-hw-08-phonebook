@@ -9,7 +9,6 @@ import { useEffect } from 'react';
 export const ContactList = () => {
   const filter = useSelector(getFilter);
   const { data: contacts, error, isLoading, refetch } = useGetContactsQuery();
-  console.log('first', useGetContactsQuery());
 
   useEffect(() => {
     refetch();
