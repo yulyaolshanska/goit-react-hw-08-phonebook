@@ -22,7 +22,7 @@ import { authReducer } from './auth/authSlice';
 const authPersistConfig = {
   key: 'auth',
   storage,
-  blacklist: ['token, name'],
+  whitelist: ['token'],
 };
 
 export const persistedReducer = persistReducer(authPersistConfig, authReducer);

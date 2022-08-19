@@ -7,7 +7,6 @@ export const contactsApi = createApi({
     prepareHeaders: (headers, { getState }) => {
       const token = getState().auth.token;
       if (token) {
-        console.log('token', token);
         headers.set('authorization', `Bearer ${token}`);
       }
       return headers;
