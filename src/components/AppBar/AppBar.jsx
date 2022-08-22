@@ -11,7 +11,6 @@ function AppBar() {
   const isLoggedIn = useSelector(authSelectors.getIsLoggedIn);
 
   return (
-    // <header>
     <>
       <Navbar bg="primary" variant="dark">
         <Container>

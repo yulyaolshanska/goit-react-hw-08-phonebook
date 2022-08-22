@@ -49,25 +49,26 @@ export const ContactList = () => {
             <ListGroup.Item>Contact {filter} not found</ListGroup.Item>
           )}
         </ListGroup>
-        // <ul className={css.contactList}>
-        //   {filteredContacts.length !== 0 ? (
-        //     filteredContacts.map(({ name, number, id }) => {
-        //       return (
-        //         <ContactItem
-        //           key={id}
-        //           id={id}
-        //           name={name}
-        //           number={number}
-        //         ></ContactItem>
-        //       );
-        //     })
-        //   ) : (
-        //     <li> Contact {filter} not found </li>
-        //   )}
-        // </ul>
       )}
 
       {error && <p>Ups, something was wrong!</p>}
     </Container>
   );
 };
+
+// <ul className={css.contactList}>
+//   {filteredContacts.length !== 0 ? (
+//     filteredContacts.map(({ name, number, id }) => {
+//       return (
+//         <ContactItem
+//           key={id}
+//           id={id}
+//           name={name}
+//           number={number}
+//         ></ContactItem>
+//       );
+//     })
+//   ) : (
+//     <li> Contact {filter} not found </li>
+//   )}
+// </ul>
