@@ -1,10 +1,11 @@
 .navlink {
   display: inline-block;
   margin-right: 20px;
-  background-color: blue;
-  box-shadow: 0 5px 0 darkblue;
+  background-color: rgb(64, 64, 255);
+  box-shadow: 0 5px 0 rgb(37, 37, 158);
+  border-radius: 5px;
   color: white;
-  padding: 1em 1.5em;
+  padding: 0.8em 1.2em;
   position: relative;
   text-decoration: none;
   text-transform: uppercase;
