@@ -1,17 +1,29 @@
 // import { NavLink } from 'react-router-dom';
 import { Nav } from 'react-bootstrap';
-import { useLocation } from 'react-router-dom';
+import { NavLink, useLocation } from 'react-router-dom';
+import styles from './AuthNav.module.css';
 
 export const AuthNav = () => {
   const location = useLocation();
 
   return (
     <Nav activeKey={location.pathname} className="me-auto">
-      <Nav.Link href="/login">Log In</Nav.Link>
-      <Nav.Link href="/register">Register</Nav.Link>
+      <NavLink
+        to="/login"
+        className={({ isActive }) =>
+          isActive ? styles.activeLink : styles.link
+        }
+      >
+        Log In
+      </NavLink>
+      <NavLink
+        to="/register"
+        className={({ isActive }) =>
+          isActive ? styles.activeLink : styles.link
+        }
+      >
+        Register
+      </NavLink>
     </Nav>
   );
 };
-
-/* <NavLink to="/login">Log In</NavLink>
-      <NavLink to="/register">Register</NavLink> */
