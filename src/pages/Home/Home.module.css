@@ -1,0 +1,16 @@
+.navlink {
+  display: inline-block;
+  margin-right: 20px;
+  background-color: blue;
+  box-shadow: 0 5px 0 darkblue;
+  color: white;
+  padding: 1em 1.5em;
+  position: relative;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+
+.navlink:hover {
+  color: white;
+  text-shadow: 0px 6px 6px rgb(0 0 0 / 35%);
+}

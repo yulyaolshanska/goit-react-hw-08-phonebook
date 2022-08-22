@@ -1,8 +1,9 @@
 import { Nav } from 'react-bootstrap';
 import { useSelector } from 'react-redux';
 import authSelectors from 'redux/auth/authSelectors';
+import styles from './Home.module.css';
 
-// const { NavLink } = require('react-router-dom');
+import { NavLink } from 'react-router-dom';
 
 import { Container } from 'react-bootstrap';
 
@@ -16,12 +17,16 @@ const Home = () => {
       ) : (
         <div>
           <p>Log In or Register and use Phonebook.</p>
-          <Nav className="justify-content-center">
-            <Nav.Item>
-              <Nav.Link href="/login">Log In</Nav.Link>
+          <Nav className="mt-5 justify-content-center">
+            <Nav.Item className="mr-3">
+              <NavLink className={styles.navlink} to="/login">
+                Log In
+              </NavLink>
             </Nav.Item>
             <Nav.Item>
-              <Nav.Link href="/register">Register</Nav.Link>
+              <NavLink className={styles.navlink} to="/register">
+                Register
+              </NavLink>
             </Nav.Item>
           </Nav>
         </div>
@@ -31,6 +36,3 @@ const Home = () => {
 };
 
 export default Home;
-
-/* <NavLink to="/login">Log In</NavLink>
-          <NavLink to="/register">Register</NavLink> */
