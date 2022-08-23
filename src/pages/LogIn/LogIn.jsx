@@ -1,13 +1,19 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Button, Col, FormControl, FormGroup } from 'react-bootstrap';
 import Form from 'react-bootstrap/Form';
 import { Container } from 'react-bootstrap';
+import { successToast, errorToast } from 'utils/notifications';
 
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import authOperations from 'redux/auth/authOperations';
+import authSelectors from 'redux/auth/authSelectors';
 
 const LogInView = () => {
   const dispatch = useDispatch();
+  const isError = useSelector(authSelectors.getIsError);
+  const isLoggedIn = useSelector(authSelectors.getIsLoggedIn);
+  const isTryEnter = useSelector(state => state.auth.isTryEnter);
+
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
@@ -29,10 +35,20 @@ const LogInView = () => {
     setPassword('');
   };
 
+  useEffect(() => {
+    if (!isError && isLoggedIn) {
+      successToast('You have successfully logged into your account.');
+      resetForm();
+    } else if (isError && !isTryEnter) {
+      errorToast(
+        'You entered the wrong username or password, please try again.'
+      );
+    }
+  }, [isError, isLoggedIn, isTryEnter]);
+
   const handleSubmit = e => {
     e.preventDefault();
     dispatch(authOperations.logIn({ email, password }));
-    resetForm();
   };
 
   return (
