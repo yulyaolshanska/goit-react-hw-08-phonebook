@@ -16,9 +16,10 @@ const register = createAsyncThunk(
   'auth/register',
   async (credentials, thunkAPI) => {
     try {
-      // console.log('credentials', credentials);
       const { data } = await axios.post('/users/signup', credentials);
       token.set(data.token);
+      // successToast('You have successfully register  your account.');
+
       return data;
     } catch (error) {
       return thunkAPI.rejectWithValue();

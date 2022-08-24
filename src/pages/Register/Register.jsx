@@ -1,20 +1,16 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import authOperations from 'redux/auth/authOperations';
 
 import { Button, Col, FormControl, FormGroup } from 'react-bootstrap';
 import Form from 'react-bootstrap/Form';
 import { Container } from 'react-bootstrap';
-import authSelectors from 'redux/auth/authSelectors';
-import { errorToast, successToast } from 'utils/notifications';
 
 const RegisterView = () => {
   const dispatch = useDispatch();
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const isError = useSelector(authSelectors.getIsError);
-  const isLoggedIn = useSelector(authSelectors.getIsLoggedIn);
   const isTryEnter = useSelector(state => state.auth.isTryEnter);
 
   const handleChange = ({ target: { name, value } }) => {
@@ -32,23 +28,6 @@ const RegisterView = () => {
         return;
     }
   };
-
-  const resetForm = () => {
-    setName('');
-    setEmail('');
-    setPassword('');
-  };
-
-  useEffect(() => {
-    if (!isError && isLoggedIn) {
-      successToast('You have successfully logged into your account.');
-      resetForm();
-    } else if (isError && !isTryEnter) {
-      errorToast(
-        'You entered the wrong username or password, please try again.'
-      );
-    }
-  }, [isError, isLoggedIn, isTryEnter]);
 
   const handleSubmit = e => {
     e.preventDefault();
@@ -101,7 +80,7 @@ const RegisterView = () => {
         <FormGroup>
           <Col sm={10}>
             <Button disabled={!name || !email || !password} type="submit">
-              Register
+              {isTryEnter ? 'Loading...' : ' Register'}
             </Button>
           </Col>
         </FormGroup>
@@ -140,3 +119,11 @@ export default RegisterView;
 //     <button type="submit">Register</button>
 //   </form>
 // </>;
+
+// useEffect(() => {
+//   if (isError && !isTryEnter) {
+//     errorToast(
+//       'You entered an invalid  username or password, please try again.'
+//     );
+//   }
+// }, [isError, isTryEnter]);

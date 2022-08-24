@@ -1,4 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
+import { errorToast, successToast } from 'utils/notifications';
 import authOperations from './authOperations';
 
 const initialState = {
@@ -22,6 +23,7 @@ const authSlice = createSlice({
       state.token = action.payload.token;
       state.isLoggedIn = true;
       state.isError = false;
+      successToast('You have successfully register  your account.');
     },
     [authOperations.register.pending](state) {
       state.isTryEnter = true;
@@ -29,6 +31,9 @@ const authSlice = createSlice({
     [authOperations.register.rejected](state) {
       state.isError = true;
       state.isTryEnter = false;
+      errorToast(
+        'You entered an invalid  email or password, please try again.'
+      );
     },
     [authOperations.logIn.fulfilled](state, action) {
       state.user = action.payload.user;
@@ -36,13 +41,18 @@ const authSlice = createSlice({
       state.isLoggedIn = true;
       state.isError = false;
       state.isTryEnter = false;
+      successToast('You have successfully logged into your account.');
     },
     [authOperations.logIn.pending](state) {
       state.isTryEnter = true;
+      state.isError = false;
     },
     [authOperations.logIn.rejected](state) {
       state.isError = true;
       state.isTryEnter = false;
+      errorToast(
+        'You entered the wrong username or password, please try again.'
+      );
     },
     [authOperations.logOut.fulfilled](state, _) {
       state.user = initialState.user;
