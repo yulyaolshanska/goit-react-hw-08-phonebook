@@ -1,11 +1,14 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Button, Col, FormControl, FormGroup } from 'react-bootstrap';
 import Form from 'react-bootstrap/Form';
 import { Container } from 'react-bootstrap';
+// import 'react-toastify/dist/ReactToastify.css';
+
 // import { successToast, errorToast } from 'utils/notifications';
 
 import { useDispatch, useSelector } from 'react-redux';
 import authOperations from 'redux/auth/authOperations';
+import { useRef } from 'react';
 // import authSelectors from 'redux/auth/authSelectors';
 
 const LogInView = () => {
@@ -40,6 +43,12 @@ const LogInView = () => {
     dispatch(authOperations.logIn({ email, password }));
   };
 
+  const emailRef = useRef();
+
+  useEffect(() => {
+    emailRef.current.focus();
+  }, []);
+
   return (
     <Container className="mt-5 justify-content-md-center">
       <h1>Log In</h1>
@@ -57,6 +66,7 @@ const LogInView = () => {
               placeholder="Enter email"
               name="email"
               onChange={handleChange}
+              ref={emailRef}
             />
           </Col>
         </FormGroup>
@@ -92,6 +102,7 @@ export default LogInView;
           Email
           <input
             onChange={handleChange}
+             ref={emailRef}
             type="email"
             name="email"
             value={email}

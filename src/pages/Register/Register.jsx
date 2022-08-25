@@ -1,10 +1,12 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import authOperations from 'redux/auth/authOperations';
+import 'react-toastify/dist/ReactToastify.css';
 
 import { Button, Col, FormControl, FormGroup } from 'react-bootstrap';
 import Form from 'react-bootstrap/Form';
 import { Container } from 'react-bootstrap';
+import { useRef } from 'react';
 
 const RegisterView = () => {
   const dispatch = useDispatch();
@@ -12,6 +14,12 @@ const RegisterView = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const isTryEnter = useSelector(state => state.auth.isTryEnter);
+
+  const nameRef = useRef();
+
+  useEffect(() => {
+    nameRef.current.focus();
+  }, []);
 
   const handleChange = ({ target: { name, value } }) => {
     switch (name) {
@@ -48,6 +56,7 @@ const RegisterView = () => {
               value={name}
               placeholder="Enter name"
               onChange={handleChange}
+              ref={nameRef}
             />
           </Col>
         </FormGroup>
@@ -96,7 +105,7 @@ export default RegisterView;
 //   <form onSubmit={handleSubmit}>
 //     <label>
 //       Name
-//       <input onChange={handleChange} type="text" name="name" value={name} />
+//       <input onChange={handleChange} ref={nameRef} type="text" name="name" value={name} />
 //     </label>
 //     <label>
 //       Email
