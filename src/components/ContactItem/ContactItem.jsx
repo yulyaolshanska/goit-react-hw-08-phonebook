@@ -2,8 +2,9 @@ import PropTypes from 'prop-types';
 import css from './ContactItem.module.css';
 import { useDeleteContactMutation } from 'redux/contactsSlice';
 import { successToast } from 'utils/notifications';
+import { memo } from 'react';
 
-export const ContactItem = ({ name, number, id }) => {
+const ContactItem = ({ name, number, id }) => {
   const [deleteContact, { isSuccess, isLoading }] = useDeleteContactMutation();
 
   if (isSuccess) {
@@ -32,3 +33,5 @@ ContactItem.propTypes = {
   number: PropTypes.string.isRequired,
   id: PropTypes.string.isRequired,
 };
+
+export default memo(ContactItem);
