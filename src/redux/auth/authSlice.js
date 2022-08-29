@@ -71,7 +71,7 @@ const authSlice = createSlice({
     },
     [authOperations.fetchCurrentUser.rejected](state) {
       state.isFetchingCurrentUser = false;
-       state.token = initialState.token;
+      state.token = initialState.token;
     },
   },
 });
